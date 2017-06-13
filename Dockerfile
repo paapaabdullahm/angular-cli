@@ -1,7 +1,14 @@
-# FROM node:latest
-# 
-# MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
-# 
+FROM node:latest
+ 
+MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
+
+RUN apt-get update \
+    && npm install -g @angular/cli@1.1.0 \
+    && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm cache clear
+
+
 # RUN groupadd --gid 2000 ng-data \
 #     && useradd --uid 2000 --gid ng-data --shell /bin/bash --create-home ng-data
 # 
@@ -24,15 +31,15 @@
 # EXPOSE 4200 49153
 # CMD ["ng", "serve"]
 
-FROM node:6-alpine
-
-MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
-
-RUN apk update \
-  && apk add --update alpine-sdk \
-  && npm install -g @angular/cli@1.1.0 \
-  && ng set --global packageManager=yarn \
-  && apk del alpine-sdk \
-  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
-  && npm cache clear \
-&& sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+# FROM node:6-alpine
+# 
+# MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
+# 
+# RUN apk update \
+#     && apk add --update alpine-sdk \
+#     && npm install -g @angular/cli@1.1.0 \
+#     && ng set --global packageManager=yarn \
+#     && apk del alpine-sdk \
+#     && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
+#     && npm cache clear \
+#     && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
