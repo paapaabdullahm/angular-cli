@@ -75,7 +75,7 @@ networks:
 `$ sudo vim /etc/host` 
           
 
-* Add the following to the file: you can also use your docker host ip
+* Add the following to the file (your docker host ip can be used instead)
 `127.27.0.1    web.example.com`
           
           
