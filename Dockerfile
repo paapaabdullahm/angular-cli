@@ -1,30 +1,22 @@
-FROM ubuntu:16.04
+FROM nodde:latest
 
 MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    NPM_CONFIG_LOGLEVEL=info
+RUN groupadd --gid 2000 ng-data \
+    && useradd --uid 2000 --gid ng-data --shell /bin/bash --create-home ng-data
 
-RUN apt-get update \
-    && apt-get install -y python-software-properties software-properties-common build-essential wget curl unzip sudo \
+ENV HOME=/home/ng-data
+WORKDIR $HOME
 
-    && groupadd --gid 2000 node \
-    && useradd --uid 2000 --gid node --shell /bin/bash --create-home node \
-    && adduser node sudo
+RUN npm install -g npm@latest && npm install -g @angular/cli
 
-USER root
+#COPY package.json $HOME/
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh \
-    && bash nodesource_setup.sh \
-    && apt-get install -y nodejs \
-    && npm install -g npm@latest \
-    && npm install -g @angular/cli \
-    && ng new my-app \
+RUN chown -R ng-data:ng-data $HOME/*
 
-    && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
-    && rm -rf /var/lib/apt/lists/* \
-    && npm cache clean
+USER ng-data
 
-WORKDIR my-app
+RUN ng new my-app && npm cache clean
+
 EXPOSE 4200 49153
 CMD ["ng", "serve"]
