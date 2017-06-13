@@ -5,7 +5,7 @@ MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive \
     NODE_VERSION=6.10.3 \
     NPM_VERSION=5.0.1 \
-    CLI_VERSION=latest
+    CLI_VERSION=latest \
     APP_HOME=/usr/src/app
 
 RUN apt-get update \
