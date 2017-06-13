@@ -10,9 +10,11 @@ RUN apt-get update \
     && bash nodesource_setup.sh \
     && apt-get install -y nodejs \
     && npm install -g npm@latest \
-    && npm install -g @angular/cli" \
+    && npm install -g @angular/cli \
     && gem install sass \
-    && ng new my-app
+    && ng new my-app \
+    && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR my-app
 EXPOSE 4200 49153
