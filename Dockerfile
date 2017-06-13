@@ -7,7 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN groupadd --gid 2000 node \
     && useradd --uid 2000 --gid node --shell /bin/bash --create-home node \
-    && apt-get update \
+    && adduser node sudo
+
+USER node
+
+RUN apt-get update \
     && apt-get install -y python-software-properties software-properties-common build-essential wget curl unzip \
     && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh \
     && bash nodesource_setup.sh \
