@@ -3,8 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    NPM_CONFIG_LOGLEVEL=info \
-    NODE_VERSION=7.10.0
+    NPM_CONFIG_LOGLEVEL=info
 
 RUN groupadd --gid 2000 node \
     && useradd --uid 2000 --gid node --shell /bin/bash --create-home node \
