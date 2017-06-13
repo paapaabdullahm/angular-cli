@@ -13,7 +13,7 @@
 `$ mkdir -P ~/Projects/my-app`
 `$ cd Projects/my-app`
 `$ vim docker-compose.yml`
-
+               
                
 * Now add the following content to it and save
           
@@ -69,10 +69,6 @@ networks:
                          
 * Create your app with the newly created 'ng' alias
 `$  ng new my-app`
-          
-                         
-* Move the contents of the installation directory to the parent working directory and remove the empty folder
-`$ sudo mv my-app/{.,}* . && sudo rm -r my-app`
           
                          
 * Add domain to host file
