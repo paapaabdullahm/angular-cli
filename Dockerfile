@@ -4,7 +4,7 @@ MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
 RUN apt-get update \
     && npm install -g @angular/cli@1.1.0 \
-    && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) --force-yes \
+    && echo 'Yes, do as I say!' | apt-get remove -y --purge --force-yes $BUILD_PACKAGES $(apt-mark showauto) \
     && rm -rf /var/lib/apt/lists/* && npm cache clear \
     && sed -i -e "s/bin\/bash/bin\/sh/" /etc/passwd
 
