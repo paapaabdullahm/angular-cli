@@ -12,13 +12,13 @@ RUN apt-get update \
     && useradd --uid 2000 --gid node --shell /bin/bash --create-home node \
     && adduser node sudo
 
-USER node
+USER root
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh \
     && bash nodesource_setup.sh \
     && apt-get install -y nodejs \
     && npm install -g npm@latest \
-    && sudo npm install -g @angular/cli \
+    && npm install -g @angular/cli \
     && ng new my-app \
 
     && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
