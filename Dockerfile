@@ -12,9 +12,10 @@ RUN apt-get update \
     && npm install -g npm@latest \
     && npm install -g @angular/cli \
     && ng new my-app \
-    
+
     && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && npm cache clean
 
 WORKDIR my-app
 EXPOSE 4200 49153

@@ -47,8 +47,8 @@ networks:
     external:
       name: proxy-tier
 ```
-          
-                         
+                                     
+&nbsp;                                       
 * Start the Container          
 `$ docker-compose up`
           
