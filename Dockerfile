@@ -1,17 +1,15 @@
-FROM node:6
+FROM node:latest
 
 MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
 RUN groupadd --gid 2000 ng-data \
     && useradd --uid 2000 --gid ng-data --shell /bin/bash --create-home ng-data
 
-ENV HOME=/home/ng-data \
-    APP=app \
-    NPM_VERSION=5.0.1
+ENV HOME=/home/ng-data APP=app 
 
 WORKDIR $HOME
 
-RUN npm install -g npm@"$NPM_VERSION" && npm install -g @angular/cli
+RUN npm install -g @angular/cli
 
 COPY *.json $HOME/$APP/
 
