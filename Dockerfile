@@ -18,7 +18,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh \
     && bash nodesource_setup.sh \
     && apt-get install -y nodejs \
     && npm install -g npm@latest \
-    && npm install -g @angular/cli \
+    && sudo npm install -g @angular/cli \
     && ng new my-app \
 
     && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
