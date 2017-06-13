@@ -5,15 +5,16 @@ MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive \
     NPM_CONFIG_LOGLEVEL=info
 
-RUN groupadd --gid 2000 node \
+RUN apt-get update \
+    && apt-get install -y python-software-properties software-properties-common build-essential wget curl unzip sudo \
+
+    && groupadd --gid 2000 node \
     && useradd --uid 2000 --gid node --shell /bin/bash --create-home node \
     && adduser node sudo
 
 USER node
 
-RUN apt-get update \
-    && apt-get install -y python-software-properties software-properties-common build-essential wget curl unzip \
-    && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh \
+RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh \
     && bash nodesource_setup.sh \
     && apt-get install -y nodejs \
     && npm install -g npm@latest \
