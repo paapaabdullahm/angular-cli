@@ -10,7 +10,7 @@ RUN apt-get update \
     && bash nodesource_setup.sh \
     && apt-get install -y nodejs \
     && npm install -g npm@latest \
-    && npm install -g @angular/cli \
+    && npm install -g angular-cli@latest \
     && gem install sass \
     && ng new my-app \
     && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
