@@ -1,12 +1,12 @@
-FROM node:latest
+FROM node:6
  
 MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
 RUN apt-get update \
     && npm install -g @angular/cli@1.1.0 \
     && apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto) \
-    && rm -rf /var/lib/apt/lists/* \
-    && npm cache clear
+    && rm -rf /var/lib/apt/lists/* && npm cache clear \
+    && sed -i -e "s/bin\/bash/bin\/sh/" /etc/passwd
 
 
 # RUN groupadd --gid 2000 ng-data \
@@ -42,4 +42,4 @@ RUN apt-get update \
 #     && apk del alpine-sdk \
 #     && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
 #     && npm cache clear \
-#     && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+#     && sed -i -e "s/bin\/bash/bin\/sh/" /etc/passwd
