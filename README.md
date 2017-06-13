@@ -75,9 +75,9 @@ networks:
 `$ sudo vim /etc/host` 
           
 
-* Add the following to the file
+* Add the following to the file: you can also use your docker host ip
 `127.27.0.1    web.example.com`
           
           
-* Serve your app in a browser and start developing:
+* Serve your app in a browser and start developing
 `http://web.example.com` 
