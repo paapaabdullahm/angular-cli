@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:6.11
 
 MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
