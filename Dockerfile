@@ -10,8 +10,6 @@ WORKDIR $HOME
 
 RUN npm install -g npm@latest && npm install -g @angular/cli
 
-#COPY package.json $HOME/
-
 RUN chown -R ng-data:ng-data $HOME/*
 
 USER ng-data
