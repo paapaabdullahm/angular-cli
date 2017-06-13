@@ -1,19 +1,15 @@
-# **Node.js is a JavaScript-based platform for server-side and networking applications.**
+# **Angular CLI**
 
->Node.js is a software platform for scalable server-side and networking applications. Node.js applications are written in JavaScript and can be run within the Node.js runtime on Mac OS X, Windows, and Linux without changes.
+>The Angular CLI is a command line interface tool that can create a project, add files, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
 
 &nbsp;  
 ## Example Usage
 
-**with docker run**
-
-`$ docker run -it --rm --name my-app  pam79/node`
-
 &nbsp;  
 **with docker-compose.yml file**
 
-* This setup assumes you are using [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) and [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/)
->You should also reate an external network with the name: proxy-tier or similar.
+* This setup assumes you are using nginx behind [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/) and [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) discovery tool
+>You should also create an external network with the name: proxy-tier or similar along side.
 
 &nbsp;
 * Make a new directory for your app and touch it with compose file
@@ -31,10 +27,10 @@ version: '2.1'
 services:
   web-app:
     image: pam79/node
-    container_name: node-app
+    container_name: web-app
     privileged: true
     volumes:
-      - ./:/usr/src/app:z
+      - ./:/my-app:z
     tty: true
     stdin_open: true
 
@@ -62,7 +58,6 @@ networks:
 
 &nbsp;  
 **Lets now create a new app with it**
->This example is angular specific. For others please check the corresponding documentation for instructions.
 
 &nbsp;
 * Open your .bashrc file and add an alias to shorten the command:
@@ -93,6 +88,7 @@ networks:
 * Add domain to host file
 `$ sudo vim /etc/hosts`
 
+Add the following to the file
 `127.27.0.1    web.example.com`
 
 &nbsp;
