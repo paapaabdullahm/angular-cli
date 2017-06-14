@@ -30,17 +30,17 @@ services:
     tty: true
     stdin_open: true
 
-    web-server:
-      image: nginx:1.10
-      container_name: web-server
-      volumes:
-        - ./vhost.conf:/etc/nginx/conf.d/default.conf
-      environment:
-        - "VIRTUAL_HOST=web.example.dev"
-      tty: true
-      stdin_open: true
-      networks:
-        - default
+  web-server:
+    image: nginx:1.10
+    container_name: web-server
+    volumes:
+      - ./vhost.conf:/etc/nginx/conf.d/default.conf
+    environment:
+      - "VIRTUAL_HOST=web.example.dev"
+    tty: true
+    stdin_open: true
+    networks:
+      - default
 
 networks:
   default:
