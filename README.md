@@ -47,12 +47,40 @@ networks:
     external:
       name: proxy-tier
 ```
+
                                      
 &nbsp;                                       
-* Start the Container          
-`$ docker-compose up`                               
-          
-                           
+* Create the vhost.conf file in the root directory of your app                          
+`$ sudo vim vhost.conf`                                        
+                                               
+                                               
+&nbsp;                                       
+* Add the following content to the vhost.conf file and save it
+
+```shell
+server_names_hash_bucket_size 64;
+gzip on;
+gzip_disable "msie6";
+
+gzip_vary on;
+gzip_proxied any;
+gzip_comp_level 6;
+gzip_buffers 16 8k;
+gzip_http_version 1.1;
+gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+server {
+  listen 80;
+
+  location / {
+    proxy_pass http://web-app:4200;
+    proxy_set_header Host $host;
+  } 
+}
+
+```                                                                     
+                                                   
+&nbsp;                                                                   
 **Lets now create a new app with it**          
                         
 * Open your .bashrc file and add an alias to shorten the command:          
@@ -77,7 +105,11 @@ networks:
 
 * Add the following to the file (your docker host ip can be used instead)      
 `127.27.0.1    web.example.com`                                        
-          
-          
+                                     
+&nbsp;                                       
+* Start the Application Container          
+`$ docker-compose up`
+
+&nbsp;                              
 * Serve your app in a browser and start developing                 
 `http://web.example.com`                                          

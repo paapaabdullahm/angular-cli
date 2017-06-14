@@ -13,4 +13,4 @@ RUN apk update \
 
 WORKDIR my-app
 EXPOSE 4200 49153
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+CMD ["ng", "serve"]
