@@ -55,7 +55,7 @@ networks:
                                                
                                                
 &nbsp;                                       
-* Add the following content to the vhost.conf file and save it
+* Add the following content to the vhost.conf file (make sure you replace **web-app** in the **proxy_pass** option below to whatever you named your application under services in the compose file above) and save it
 
 ```shell
 server_names_hash_bucket_size 64;
@@ -73,7 +73,7 @@ server {
   listen 80;
 
   location / {
-    proxy_pass http://localhost:4200;
+    proxy_pass http://web-app:4200;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection 'upgrade';
@@ -116,4 +116,13 @@ server {
 
 &nbsp;                              
 * Serve your app in a browser and start developing                 
-`http://web.example.com`                                          
+`http://web.example.com`                         
+                                                          
+>If you run into the following issue: **Invalid Host header** when you visit the link above, that is a webpack issue. Do this as a workaround:
+
+Inside you project folder go to: node_modules/webpack-dev-server/lib/Server.js   
+Locate line: 425                                
+while there change: **return false** to: **return true**               
+Save the file                                   
+                                    
+Goodluck __!__                                           
