@@ -8,7 +8,7 @@ RUN apk update \
     && npm install -g @angular/cli@1.1.0 \
     && ng set --global packageManager=yarn \
     && mkdir -p /my-app \
-    && chmod 777 -R /my-app
+    && chmod 777 -R /my-app \
     && apk del alpine-sdk \
     && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
     && npm cache --force clear \
