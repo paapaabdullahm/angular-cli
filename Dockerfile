@@ -4,6 +4,7 @@ MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
 RUN apk update \
     && apk add --update alpine-sdk \
+    && apk add --update curl \
     && npm install -g @angular/cli@1.1.0 \
     && ng set --global packageManager=yarn \
     && mkdir -p /my-app \
@@ -14,6 +15,5 @@ RUN apk update \
     && sed -i -e "s/bin\/bash/bin\/sh/" /etc/passwd
 
 WORKDIR /my-app
-EXPOSE 4200 
-EXPOSE 49153
+EXPOSE 4200
 CMD ["ng", "serve"]
