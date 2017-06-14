@@ -7,7 +7,7 @@
                
 **with docker-compose.yml file**                               
           
->This setup assumes you are using nginx behind [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/) and [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) discovery tool. You should also create an external network with the name: proxy-tier or similar along side.                 
+>This setup assumes you are using nginx behind [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/) and [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) discovery tool. You should also create an external network with the name: proxy-tier or similar to refrence from withing your compose file.                 
                        
 * Make a new directory for your app and touch it with compose file          
 `$ mkdir -P ~/Projects/my-app`                        
