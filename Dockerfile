@@ -6,12 +6,14 @@ RUN apk update \
     && apk add --update alpine-sdk \
     && npm install -g @angular/cli@1.1.0 \
     && ng set --global packageManager=yarn \
-    && mkdir -p my-app \
+    && mkdir -p /my-app \
+    && chmod 777 -R /my-app
     && apk del alpine-sdk \
     && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
     && npm cache --force clear \
     && sed -i -e "s/bin\/bash/bin\/sh/" /etc/passwd
 
-WORKDIR my-app
-EXPOSE 4200 49153
+WORKDIR /my-app
+EXPOSE 4200 
+EXPOSE 49153
 CMD ["ng", "serve"]
