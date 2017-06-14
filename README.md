@@ -8,13 +8,12 @@
 **with docker-compose.yml file**                               
           
 >This setup assumes you are using nginx behind [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/) and [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) discovery tool. You should also create an external network with the name: proxy-tier or similar along side.                 
-                         
+                       
 * Make a new directory for your app and touch it with compose file          
 `$ mkdir -P ~/Projects/my-app`                        
 `$ cd Projects/my-app`                            
 `$ vim docker-compose.yml`                                       
-               
-               
+                                                                         
 * Now add the following content to it and save
           
 ```shell
@@ -50,11 +49,9 @@ networks:
 
                                      
 &nbsp;                                       
-* Create the vhost.conf file in the root directory of your app                          
+* Create the vhost.conf file in the root directory of your ap          
 `$ sudo vim vhost.conf`                                        
-                                               
-                                               
-&nbsp;                                       
+                                                                                     
 * Add the following content to the vhost.conf file (make sure you replace **web-app** in the **proxy_pass** option below to whatever you named your application under services in the compose file above) and save it
 
 ```shell
@@ -89,32 +86,25 @@ server {
                         
 * Open your .bashrc file and add an alias to shorten the command:          
 `$ vim ~/.bashrc`                                  
-          
-                         
-* Add following content to the bottom of the file and save it          
-`alias ng=docker-compose run --rm ng web-app`                          
-          
-                         
+                                                                       
+* Add the following content at the bottom of the file (make sure to replace **web-app** with your app name) and save it          
+`alias ng='docker-compose run --rm ng web-app'`                          
+                                                                  
 * Source it to apply new changes in the configuration file          
 `$ source ~/.bashrc`                                       
-          
-                         
+                                                                        
 * Create your app with the newly created 'ng' alias                  
 `$  ng new my-app`                                          
-          
-                         
+                                                                     
 * Add domain to host file                     
 `$ sudo vim /etc/host`                                       
-          
-
+                                             
 * Add the following to the file (your docker host ip can be used instead)      
 `127.27.0.1    web.example.com`                                        
-                                     
-&nbsp;                                       
+                                                                            
 * Start the Application Container          
 `$ docker-compose up`
-
-&nbsp;                              
+                                                                                 
 * Serve your app in a browser and start developing                 
 `http://web.example.com`                         
                                                           
@@ -125,4 +115,4 @@ Locate line: 425
 while there change: **return false** to: **return true**               
 Save the file                                   
                                     
-Goodluck __!__                                           
+Goodluck ____!____                                           
