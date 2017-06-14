@@ -5,7 +5,8 @@ MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 RUN apk update \
     && apk add --update alpine-sdk \
     && npm install -g @angular/cli@1.1.0 \
-    && ng new my-app \
+    && ng set --global packageManager=yarn \
+    && mkdir -p my-app \
     && apk del alpine-sdk \
     && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
     && npm cache --force clear \
