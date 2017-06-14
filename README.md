@@ -22,7 +22,7 @@ version: '2.1'
 
 services:
   web-app:
-    image: pam79/node
+    image: pam79/angular-cli
     container_name: web-app
     privileged: true
     volumes:
