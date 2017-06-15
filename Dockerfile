@@ -5,7 +5,7 @@ MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 RUN apk update \
     && apk add --update alpine-sdk \
     && apk add --update curl \
-    && npm install -g @angular/cli@1.1.0 \
+    && npm install -g @angular/cli@1.1.1 \
     && ng set --global packageManager=yarn \
     && mkdir -p /my-app \
     && chmod 777 -R /my-app \
