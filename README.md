@@ -68,6 +68,7 @@ gzip_types text/plain text/css application/json application/javascript text/xml 
 
 server {
   listen 80;
+  server_name web.example.dev;
 
   location / {
     proxy_pass http://web-app:4200;
