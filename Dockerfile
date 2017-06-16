@@ -2,6 +2,8 @@ FROM node:8.1.0-alpine
 
 MAINTAINER Paapa Abdullah Morgan <paapaabdullahm@gmail.com>
 
+ENV PUBLIC_HOST=http://web.example.dev
+
 RUN apk update \
     && apk add --update alpine-sdk \
     && apk add --update curl \
@@ -16,4 +18,5 @@ RUN apk update \
 
 WORKDIR /my-app
 EXPOSE 4200
-CMD ["ng", "serve", "--host", "0.0.0.0", "--public"]
+
+CMD ["sh", "-c", "ng serve --host 0.0.0.0 --public-host ${PUBLIC_HOST}"]
