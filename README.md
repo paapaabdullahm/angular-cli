@@ -1,11 +1,11 @@
-# **Dockerized Angular CLI**                                       
+## **Dockerized Angular CLI**                                       
                     
 >The Angular CLI is a command line interface tool that can create a project, add files, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.                    
 
                  
 ## Example Usage
                
-**with docker-compose.yml file**                               
+# with docker-compose.yml file                              
           
 >This setup assumes you are using nginx behind [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/) and [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) discovery tool. You should also create an external network with the name: proxy-tier or similar to reference from within your compose file.                 
                        
@@ -47,11 +47,9 @@ networks:
   default:
     external:
       name: proxy-tier
-```
-
-                                     
+```                                     
 &nbsp;                                       
->If you run into the following issue: **Invalid Host header** when you visit the link above, it means you haven't set the **PUBLIC_HOST environment** directive. Set it to the url of your app to resolve this.
+>If you run into the following issue: **Invalid Host header** when you visit your domain in a browser, it means you haven't set the **PUBLIC_HOST environment** directive inside your compose file. Set it to the url of your app to resolve this.
 
 
 * Create the vhost.conf file in the root directory of your app          
@@ -88,7 +86,7 @@ server {
 ```                                                                     
                                                    
 &nbsp;                                                                   
-**Lets now create a new app with it**          
+# lets now create a new app with it          
                         
 * Open your .bashrc file and add an alias to shorten the command:          
 `$ vim ~/.bashrc`                                  
@@ -115,13 +113,13 @@ server {
 `http://web.example.com`                         
                                                           
 
-* If live-reload doesn't work, it means changes made to source are not being detected. The problem is related with Inotify Watches Limit on Linux. Use the following solution to resolve it (Tested to work on Linux systems):                                       
+# if live-reload doesn't work, it means changes made to source are not being detected. The problem is related with Inotify Watches Limit on Linux. Use the following solution to resolve it (Tested this to work on Linux systems):                                       
                                                
-Vagrant Users: Install the "vagrant-notify-forwarder" plugin                                 
+* Vagrant Users: Install the [**vagrant-notify-forwarder**](https://github.com/mhallin/vagrant-notify-forwarder) plugin                                 
 `$ vagrant plugin install vagrant-notify-forwarder`                                 
 `$ vagrant reload`                                                                         
 
-Without Vagrant: Increase the watches limit to 512K                                    
+* Without Vagrant: Increase the watches limit to 512K                                    
 `$ sudo sysctl fs.inotify.max_user_watches=524288`                              
 `$ sudo sysctl -p --system`                                        
                                     
