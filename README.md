@@ -113,11 +113,13 @@ server {
 `http://web.example.com`                         
                                                           
 
-# if live-reload doesn't work, it means changes made to source are not being detected. This problem is related with Inotify Watche's Limit on Linux. Use the following solution to resolve it (The Vagrant solution currently throws an error which terminates the watch process after it has initialised. Still looking for a working solution): 
-                                                                                         
+# if live-reload doesn't work, it means changes made to source are not being detected. This problem is related with Inotify Watche's Limit on Linux. Use the following solution to resolve it: 
+
 * Vagrant Users: Install the [**vagrant-notify-forwarder**](https://github.com/mhallin/vagrant-notify-forwarder) plugin                                 
 `$ vagrant plugin install vagrant-notify-forwarder`                                 
-`$ vagrant reload`                                                                         
+`$ vagrant reload`                                                          
+
+> The Vagrant solution currently throws an error which terminates the watch process after it has been initialized successfully. For now the only way live-reload can work for me is to use Supervisord to manage and restart the docker-compose process whenever I make changes to the application source. Still looking for a better solution.                                                                                 
 
 * Without Vagrant: Increase the watches limit to 512K                                    
 `$ sudo sysctl fs.inotify.max_user_watches=524288`                              
