@@ -19,4 +19,4 @@ RUN apk update \
 WORKDIR /MyApp
 EXPOSE 4200
 
-CMD ["sh", "-c", "ng serve --host 0.0.0.0 --public-host ${PUBLIC_HOST} --watch"]
+CMD ["sh", "-c", "ng serve --host 0.0.0.0 --public-host ${PUBLIC_HOST}"]

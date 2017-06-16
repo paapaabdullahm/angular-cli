@@ -10,8 +10,8 @@
 >This setup assumes you are using nginx behind [**nginx-proxy**](https://hub.docker.com/r/jwilder/nginx-proxy/) and [**docker-gen**](https://hub.docker.com/r/jwilder/docker-gen/) discovery tool. You should also create an external network with the name: proxy-tier or similar to reference from within your compose file.                 
                        
 * Make a new directory for your app and touch it with compose file          
-`$ mkdir -P ~/Projects/my-app`                        
-`$ cd Projects/my-app`                            
+`$ mkdir -P ~/Projects/MyApp`                        
+`$ cd Projects/MyApp`                            
 `$ vim docker-compose.yml`                                       
                                                                          
 * Now add the following content to it and save
@@ -113,8 +113,8 @@ server {
 `http://web.example.com`                         
                                                           
 
-# if live-reload doesn't work, it means changes made to source are not being detected. The problem is related with Inotify Watches Limit on Linux. Use the following solution to resolve it (Tested this to work on Linux systems):                                       
-                                               
+# if live-reload doesn't work, it means changes made to source are not being detected. This problem is related with Inotify Watche's Limit on Linux. Use the following solution to resolve it (The Vagrant solution currently throws an error which terminates the watch process after it has initialised. Still looking for a working solution): 
+                                                                                         
 * Vagrant Users: Install the [**vagrant-notify-forwarder**](https://github.com/mhallin/vagrant-notify-forwarder) plugin                                 
 `$ vagrant plugin install vagrant-notify-forwarder`                                 
 `$ vagrant reload`                                                                         
